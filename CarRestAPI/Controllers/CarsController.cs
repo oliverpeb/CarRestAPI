@@ -26,7 +26,7 @@ namespace CarRestAPI.Controllers
             [FromQuery] string? modelfilter)
             
         {
-            List<Car> result = _repository.GetAll(amount, modelfilter);
+            List<Car> result = _repository.GetAll();
             if (result.Count < 1)
             {
                 return NoContent(); // NotFound er også ok

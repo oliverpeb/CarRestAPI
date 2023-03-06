@@ -21,7 +21,7 @@ namespace CarRestAPI.Repositories
             
             
             
-            public List<Car> GetAll(int? amount, string? modelfilter)
+           /* public List<Car> GetAll(int? amount, string? modelfilter)
             {
                 List<Car> result = new List<Car>(_cars);
 
@@ -39,6 +39,11 @@ namespace CarRestAPI.Repositories
 
                 return result;
             }
+           */
+           public List<Car> GetAll()
+        {
+            return new List<Car>(_cars);
+        }
             public Car Add(Car newCar)
              {
             newCar.Validate();
@@ -46,16 +51,20 @@ namespace CarRestAPI.Repositories
             _cars.Add(newCar);
             return newCar;
              }
-        public Car Delete(int id)
+        public Car? Delete(int id)
         {
-            Car foundCar = GetbyID(id);
+            Car? foundCar = GetbyID(id);
+            if (foundCar == null)
+            {
+                return null;
+            }
             _cars.Remove(foundCar);
             return foundCar;
         }
 
-        public Car? GetbyID(int id)
+        public Car? GetbyID(int Id)
         {
-            return _cars.Find(x => x.id == id);
+            return _cars.Find(x => x.id == Id);
         }
 
         public Car? Update(int id, Car update)

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRestAPI", "CarRestAPI\CarRestAPI.csproj", "{90AD5BDD-633B-49E6-8324-C349B7D04D7C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRestAPITests", "CarRestAPITests\CarRestAPITests.csproj", "{30FDE2BF-881D-4FC7-9C42-ED981EBC1171}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{90AD5BDD-633B-49E6-8324-C349B7D04D7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90AD5BDD-633B-49E6-8324-C349B7D04D7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90AD5BDD-633B-49E6-8324-C349B7D04D7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30FDE2BF-881D-4FC7-9C42-ED981EBC1171}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30FDE2BF-881D-4FC7-9C42-ED981EBC1171}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30FDE2BF-881D-4FC7-9C42-ED981EBC1171}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30FDE2BF-881D-4FC7-9C42-ED981EBC1171}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
