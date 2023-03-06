@@ -21,7 +21,7 @@ namespace CarRestAPI.Repositories
             
             
             
-           /* public List<Car> GetAll(int? amount, string? modelfilter)
+           /*public List<Car> GetAll(int? amount, string? modelfilter)
             {
                 List<Car> result = new List<Car>(_cars);
 
@@ -71,7 +71,7 @@ namespace CarRestAPI.Repositories
         {
             update.Validate();
             Car? foundCar = GetbyID(id);
-            if (foundCar != null)
+            if (foundCar == null)
             {
                 return null;
             }
