@@ -21,7 +21,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<ICarsRepository>(new CarsRepository());
+builder.Services.AddSingleton<CarsRepository>(new CarsRepository());
 
 var app = builder.Build();
 

@@ -11,9 +11,9 @@ namespace CarRestAPI.Controllers
 
     public class CarsController : ControllerBase
     {
-        private ICarsRepository _repository;
+        private CarsRepository _repository;
 
-        public CarsController(ICarsRepository repository)
+        public CarsController(CarsRepository repository)
         {
             _repository = repository;
         }
@@ -51,7 +51,7 @@ namespace CarRestAPI.Controllers
             {
 
                 Car createdCar = _repository.Add(newCar);
-                return Created($"api/cars/" + createdCar.id, createdCar);
+                return Created($"api/cars/" + createdCar.Id, createdCar);
             }
             catch (ArgumentNullException ex)
             {

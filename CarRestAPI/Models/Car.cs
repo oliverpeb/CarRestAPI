@@ -6,10 +6,10 @@ namespace CarRestAPI.Models
     public class Car
     {
         //Test
-        public int id { get; set; }
-        public string model { get; set; }
-        public int price { get; set; }
-        public string licenseplate { get; set; }
+        public int Id { get; set; }
+        public string Model { get; set; }
+        public int Price { get; set; }
+        public string Licenseplate { get; set; }
 
 
         public override bool Equals(object? obj)
@@ -17,38 +17,38 @@ namespace CarRestAPI.Models
             if (obj == null) return false;
             if (obj.GetType() != typeof(Car)) return false;
             Car cars = (Car)obj;
-            if (cars.id != id) return false;
-            if (cars.model != model) return false;
-            if (cars.licenseplate != licenseplate) return false;
-            if (cars.price != price) return false;
+            if (cars.Id != Id) return false;
+            if (cars.Model != Model) return false;
+            if (cars.Licenseplate != Licenseplate) return false;
+            if (cars.Price != Price) return false;
             return true;
         }
 
         public void Validateid()
         {
-            if (id == null)
+            if (Id == null)
                 throw new ArgumentException("id cannot be null");
         }
 
         public void ValidateModel()
         {
 
-            if (model.Length < 4)
+            if (Model.Length < 4)
                 throw new ArgumentException("The model name cannot be less than 4");
 
         }
 
         public void ValidatePrice()
         {
-            if (price < 0)
-                throw new ArgumentOutOfRangeException("the price of the car cannot be less than 1" + price);
+            if (Price < 0)
+                throw new ArgumentOutOfRangeException("the price of the car cannot be less than 1" + Price);
         }
 
         public void ValidateLicensePlate()
         {
-            if (licenseplate.Length <= 2)
+            if (Licenseplate.Length <= 2)
                 throw new ArgumentOutOfRangeException("The licenseplate value must be between 2 and 7");
-            if (licenseplate.Length >= 7)
+            if (Licenseplate.Length >= 7)
                 throw new ArgumentOutOfRangeException("The licenseplate value must be between 2 and 7");
         }
 

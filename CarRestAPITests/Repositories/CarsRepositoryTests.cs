@@ -20,7 +20,7 @@ namespace CarRestAPI.Repositories.Tests
         [TestMethod()]
         public void GetAllTest()
         {
-            int expectedCount = 0;
+            int expectedCount = 3;
 
             CarsRepository repos = new CarsRepository();
 
@@ -32,10 +32,10 @@ namespace CarRestAPI.Repositories.Tests
 
             foreach (var Car in list)
             {
-                int foundIds = list.FindAll(x => x.id == Car.id).Count(); 
+                int foundIds = list.FindAll(x => x.Id == Car.Id).Count(); 
                 if (foundIds > 1) 
                 { 
-                    Assert.Fail($"ID: {Car.id} exists {foundIds} times in the list");                
+                    Assert.Fail($"ID: {Car.Id} exists {foundIds} times in the list");                
                 }
             }
 
@@ -53,16 +53,16 @@ namespace CarRestAPI.Repositories.Tests
             CarsRepository repos = new CarsRepository();
             int beforeAdd = repos.GetAll().Count();
 
-            Car newCar = new Car { id = wrongID, model = model, licenseplate = licenseplate, price = price };
+            Car newCar = new Car { Id = wrongID, Model = model, Licenseplate = licenseplate, Price = price };
 
             Car addedCars = repos.Add(newCar);
 
             Assert.AreEqual(typeof(Car), addedCars.GetType());
 
-            Assert.AreEqual(CorrectID, addedCars.id);
-            Assert.AreEqual(model, addedCars.model);
-            Assert.AreEqual(licenseplate, addedCars.licenseplate);
-            Assert.AreEqual(price, addedCars.price);
+            Assert.AreEqual(CorrectID, addedCars.Id);
+            Assert.AreEqual(model, addedCars.Model);
+            Assert.AreEqual(licenseplate, addedCars.Licenseplate);
+            Assert.AreEqual(price, addedCars.Price);
 
             Assert.AreEqual(beforeAdd + 1, repos.GetAll().Count());
 
@@ -72,39 +72,40 @@ namespace CarRestAPI.Repositories.Tests
         public void DeleteTest()
         {
             int id = 1;
-            int wrongID = 99;
+            int wrongID = 25;
 
             CarsRepository repos = new CarsRepository();
             int beforeDelete = repos.GetAll().Count();
 
             Car? deleted = repos.Delete(id);
-            Car? triedDeleted = repos.Delete(wrongID);
-
+            Car? triedDelete = repos.Delete(wrongID);
+           
+            // Assert
             Assert.IsNull(repos.GetbyID(id));
             Assert.AreEqual(beforeDelete - 1, repos.GetAll().Count());
-            Assert.IsNull(triedDeleted);
+            Assert.IsNull(triedDelete);
         }
 
         [TestMethod()]
         public void GetbyIDTest()
         {
-            int Id = 1;
-            int wrongID = 99;
+            int id = 1;
+            int wrongID = 999;
             string model = "Subaru";
             string licenseplate = "123ABC";
             int price = 240000;
 
             CarsRepository repos = new CarsRepository();
 
-            Car? foundCar = repos.GetbyID(Id);
+            Car? foundCar = repos.GetbyID(id);
             Car? notFoundCar = repos.GetbyID(wrongID);
 
 
             Assert.IsNotNull(foundCar);
-            Assert.AreEqual(Id, foundCar.id);
-            Assert.AreEqual(model, foundCar.model);
-            Assert.AreEqual(price, foundCar.price);
-            Assert.AreEqual(licenseplate, foundCar.licenseplate);
+            Assert.AreEqual(id, foundCar.Id);
+            Assert.AreEqual(model, foundCar.Model);
+            Assert.AreEqual(price, foundCar.Price);
+            Assert.AreEqual(licenseplate, foundCar.Licenseplate);
 
             Assert.IsNull(notFoundCar);
         }
@@ -120,15 +121,15 @@ namespace CarRestAPI.Repositories.Tests
             int price = 240000;
 
             CarsRepository repos = new CarsRepository();
-            Car update = new Car { id = id, model = model, licenseplate = licenseplate, price = price };
+            Car update = new Car { Id = id, Model = model, Licenseplate = licenseplate, Price = price };
 
             Car? updated = repos.Update(id, update);
             Car? wrongUpdated = repos.Update(wrongId, update);
 
-            Assert.AreEqual(id, update.id);
-            Assert.AreEqual(model, update.model);
-            Assert.AreEqual(licenseplate, update.licenseplate);
-            Assert.AreEqual(price, update.price);
+            Assert.AreEqual(id, update.Id);
+            Assert.AreEqual(model, update.Model);
+            Assert.AreEqual(licenseplate, update.Licenseplate);
+            Assert.AreEqual(price, update.Price);
 
             Assert.IsNull(wrongUpdated);
         }
